@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AddressBook/AddressBook.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+{
+@private
+  ABAddressBookRef _addressBook;
+  UIActivityIndicatorView *_activityIndicatorView;
+}
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (void)_updateContact;
 @end

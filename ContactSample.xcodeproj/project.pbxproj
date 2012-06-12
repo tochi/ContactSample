@@ -15,6 +15,11 @@
 		D918D2431580AD89000E3BEA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D918D2421580AD89000E3BEA /* AppDelegate.m */; };
 		D918D2461580AD89000E3BEA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D918D2441580AD89000E3BEA /* MainStoryboard.storyboard */; };
 		D918D2491580AD89000E3BEA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D918D2481580AD89000E3BEA /* ViewController.m */; };
+		D918D2541580B09F000E3BEA /* ContactSample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D918D2521580B09F000E3BEA /* ContactSample.xcdatamodeld */; };
+		D918D2611580B47E000E3BEA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D918D2601580B47E000E3BEA /* CoreData.framework */; };
+		D918D2631580B5CE000E3BEA /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D918D2621580B5CE000E3BEA /* AddressBook.framework */; };
+		D918D26F15818C57000E3BEA /* Contact+Customized.m in Sources */ = {isa = PBXBuildFile; fileRef = D918D26E15818C57000E3BEA /* Contact+Customized.m */; };
+		D95C128B1586D514004EAFBE /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = D95C128A1586D514004EAFBE /* Contact.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +27,22 @@
 		D918D2321580AD89000E3BEA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D918D2341580AD89000E3BEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D918D2361580AD89000E3BEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D918D23A1580AD89000E3BEA /* ContactSample-Info.plist */ = {isa = PBXFileReference; path = "ContactSample-Info.plist"; sourceTree = "<group>"; };
+		D918D23A1580AD89000E3BEA /* ContactSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ContactSample-Info.plist"; sourceTree = "<group>"; };
 		D918D23C1580AD89000E3BEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D918D23E1580AD89000E3BEA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D918D2401580AD89000E3BEA /* ContactSample-Prefix.pch */ = {isa = PBXFileReference; path = "ContactSample-Prefix.pch"; sourceTree = "<group>"; };
-		D918D2411580AD89000E3BEA /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		D918D2401580AD89000E3BEA /* ContactSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ContactSample-Prefix.pch"; sourceTree = "<group>"; };
+		D918D2411580AD89000E3BEA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D918D2421580AD89000E3BEA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D918D2451580AD89000E3BEA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		D918D2471580AD89000E3BEA /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		D918D2471580AD89000E3BEA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D918D2481580AD89000E3BEA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D918D2531580B09F000E3BEA /* ContactSample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContactSample.xcdatamodel; sourceTree = "<group>"; };
+		D918D2601580B47E000E3BEA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D918D2621580B5CE000E3BEA /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		D918D26D15818C57000E3BEA /* Contact+Customized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Contact+Customized.h"; sourceTree = "<group>"; };
+		D918D26E15818C57000E3BEA /* Contact+Customized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Contact+Customized.m"; sourceTree = "<group>"; };
+		D95C12891586D514004EAFBE /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		D95C128A1586D514004EAFBE /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D918D2631580B5CE000E3BEA /* AddressBook.framework in Frameworks */,
+				D918D2611580B47E000E3BEA /* CoreData.framework in Frameworks */,
 				D918D2331580AD89000E3BEA /* UIKit.framework in Frameworks */,
 				D918D2351580AD89000E3BEA /* Foundation.framework in Frameworks */,
 				D918D2371580AD89000E3BEA /* CoreGraphics.framework in Frameworks */,
@@ -67,6 +81,8 @@
 		D918D2311580AD89000E3BEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D918D2621580B5CE000E3BEA /* AddressBook.framework */,
+				D918D2601580B47E000E3BEA /* CoreData.framework */,
 				D918D2321580AD89000E3BEA /* UIKit.framework */,
 				D918D2341580AD89000E3BEA /* Foundation.framework */,
 				D918D2361580AD89000E3BEA /* CoreGraphics.framework */,
@@ -82,6 +98,11 @@
 				D918D2441580AD89000E3BEA /* MainStoryboard.storyboard */,
 				D918D2471580AD89000E3BEA /* ViewController.h */,
 				D918D2481580AD89000E3BEA /* ViewController.m */,
+				D918D2521580B09F000E3BEA /* ContactSample.xcdatamodeld */,
+				D95C12891586D514004EAFBE /* Contact.h */,
+				D95C128A1586D514004EAFBE /* Contact.m */,
+				D918D26D15818C57000E3BEA /* Contact+Customized.h */,
+				D918D26E15818C57000E3BEA /* Contact+Customized.m */,
 				D918D2391580AD89000E3BEA /* Supporting Files */,
 			);
 			path = ContactSample;
@@ -164,6 +185,9 @@
 				D918D23F1580AD89000E3BEA /* main.m in Sources */,
 				D918D2431580AD89000E3BEA /* AppDelegate.m in Sources */,
 				D918D2491580AD89000E3BEA /* ViewController.m in Sources */,
+				D918D2541580B09F000E3BEA /* ContactSample.xcdatamodeld in Sources */,
+				D918D26F15818C57000E3BEA /* Contact+Customized.m in Sources */,
+				D95C128B1586D514004EAFBE /* Contact.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,8 +299,22 @@
 				D918D24E1580AD89000E3BEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D918D2521580B09F000E3BEA /* ContactSample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D918D2531580B09F000E3BEA /* ContactSample.xcdatamodel */,
+			);
+			currentVersion = D918D2531580B09F000E3BEA /* ContactSample.xcdatamodel */;
+			path = ContactSample.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D918D2251580AD89000E3BEA /* Project object */;
 }
