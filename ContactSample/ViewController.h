@@ -13,7 +13,6 @@
 {
 @private
   ABAddressBookRef _addressBook;
-  UIActivityIndicatorView *_activityIndicatorView;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 - (void)_updateContact;

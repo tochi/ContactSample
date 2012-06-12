@@ -12,6 +12,7 @@
 #import "Contact+Customized.h"
 
 @interface ViewController ()
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, void *context);
@@ -19,8 +20,20 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
 
 @implementation ViewController
 @synthesize tableView = _tableView;
+@synthesize activityIndicatorView = _activityIndicatorView;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize fetchedResultsController = _fetchedResultsController;
+
+- (UIActivityIndicatorView *)activityIndicatorView
+{
+  if (_activityIndicatorView != nil) {
+    return _activityIndicatorView;
+  }
+  _activityIndicatorView = [[UIActivityIndicatorView alloc] init];
+  _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+  _activityIndicatorView.center = self.view.center;
+  return _activityIndicatorView;
+}
 
 - (NSManagedObjectContext *)managedObjectContext
 {
@@ -69,7 +82,8 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
 /* -------------------------------------------------- */
 void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, void *context)
 {
-  ABAddressBookRevert(addressBook);
+  NSLog(@"_addressBookChanged");
+  ABAddressBookUnregisterExternalChangeCallback(addressBook, _addressBookChanged, context);
   ViewController *viewController = (__bridge_transfer ViewController *)context;
   [viewController _updateContact];
 }
@@ -79,9 +93,6 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
   self = [super initWithCoder:coder];
   if (self) {
     _addressBook = ABAddressBookCreate();
-//    ABAddressBookRegisterExternalChangeCallback(_addressBook,
-//                                                _addressBookChanged,
-//                                                (__bridge_retained void *)self);
   }
   return self;
 }
@@ -91,11 +102,7 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
 /* -------------------------------------------------- */
 - (void)viewDidLoad
 {
-  [super viewDidLoad];
-  
-  _activityIndicatorView = [[UIActivityIndicatorView alloc] init];
-  _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-  _activityIndicatorView.center = self.view.center;
+  [super viewDidLoad];  
 }
 
 - (void)viewDidUnload
@@ -134,11 +141,11 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
 #pragma mark - 
 /* -------------------------------------------------- */
 - (void)_updateContact
-{
+{  
   dispatch_queue_t mainQueue = dispatch_get_main_queue();
   dispatch_queue_t updateQueue = dispatch_queue_create("com.aguuu.contactsample.update", nil);
-  [_activityIndicatorView startAnimating];
-  [self.view addSubview:_activityIndicatorView];
+  [self.activityIndicatorView startAnimating];
+  [self.view addSubview:self.activityIndicatorView];
   
   dispatch_async(updateQueue, ^{
     // Update contacts.
@@ -220,14 +227,18 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
     [userDefaults synchronize];
     
     dispatch_async(mainQueue, ^{      
-      [_activityIndicatorView stopAnimating];
-      [_activityIndicatorView removeFromSuperview];
+      [self.activityIndicatorView stopAnimating];
+      [self.activityIndicatorView removeFromSuperview];
       NSError *error = nil;
       if ([self.fetchedResultsController performFetch:&error] == NO) {
         NSLog(@"Error:%@", error);
         abort();
       }
       [self.tableView reloadData];
+
+      ABAddressBookRegisterExternalChangeCallback(_addressBook,
+                                                  _addressBookChanged,
+                                                  (__bridge_retained void *)self);
     });
   });
   dispatch_release(updateQueue);

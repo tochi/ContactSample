@@ -25,13 +25,13 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  ViewController *viewController = (ViewController *)self.window.rootViewController;
+  [viewController _updateContact];
   return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-  ViewController *viewController = (ViewController *)self.window.rootViewController;
-  [viewController _updateContact];
 }
 
 /* -------------------------------------------------- */
