@@ -143,7 +143,7 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
 - (void)_updateContact
 {  
   dispatch_queue_t mainQueue = dispatch_get_main_queue();
-  dispatch_queue_t updateQueue = dispatch_queue_create("com.aguuu.contactsample.update", nil);
+  dispatch_queue_t updateQueue = dispatch_queue_create("com.aguuu.contactsample.update", NULL);
   [self.activityIndicatorView startAnimating];
   [self.view addSubview:self.activityIndicatorView];
   
@@ -156,6 +156,8 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
     [userDefaults registerDefaults:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
                                                                forKey:key]];
     BOOL deleteFlag = [userDefaults boolForKey:@"deleteFlag"];
+    
+    [self.managedObjectContext lock];
     
     for (int i = 0; i < CFArrayGetCount(records); i++) {
       @autoreleasepool {
@@ -223,6 +225,9 @@ void _addressBookChanged (ABAddressBookRef addressBook, CFDictionaryRef info, vo
       NSLog(@"Error:%@", error);
       abort();
     }
+    
+    [self.managedObjectContext unlock];
+    
     [userDefaults setBool:!deleteFlag forKey:@"deleteFlag"];
     [userDefaults synchronize];
     
