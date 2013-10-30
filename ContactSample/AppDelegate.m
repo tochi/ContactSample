@@ -26,7 +26,24 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   ViewController *viewController = (ViewController *)self.window.rootViewController;
-  [viewController _updateContact];
+
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            if(granted){
+                // ユーザーがアドレス帳へのアクセスを許可した場合
+                [viewController _updateContact];
+            }else{
+                // ユーザーがアドレス帳へのアクセスを許可しなかった場合
+            }
+        });
+    }else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
+        // ユーザーがアドレス帳へのアクセスを以前に許可した場合
+        [viewController _updateContact];
+    }else{
+    }
+    
   return YES;
 }
 
